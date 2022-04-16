@@ -20,6 +20,7 @@ def conf_matrix(y_test,y_pred_test):
 ### Roc curve and PR curve
 
 def roc_pr_curve(y_test,probs_predict):
+    print("AUROC score: ",roc_auc_score(y_test,probs_predict))
     # Draw the ROC curve
     plt.figure(1)
     # ROC curve components

@@ -2,29 +2,16 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import xgboost as xgb
 from sklearn.linear_model import LogisticRegression as LR
 import pickle
 import metrics
 
 
 def evaluate(model_name):
-    X_train=np.load("../data/x_train.npy")
-    y_train=np.load("../data/y_train.npy")
-    X_test = np.load("../data/x_test.npy")
-    y_test = np.load("../data/y_test.npy")
-    train_x = []
-    test_x = []
-    for t in X_train:
-        train_x.append(t.flatten())
-    X_train = train_x
-    for t in X_test:
-        test_x.append(t.flatten())
-    X_test = test_x
-
-    _filename_ = model_name+".model"
+    import utils
+    x_train,x_test,y_train,y_test=utils.load_standard_data()
     # Load the Model back from file
-    with open(f'../models/{_filename_}', 'rb') as file:  
+    with open(f'../models/{model_name}.model', 'rb') as file:  
         model = pickle.load(file)
         
 #     if model_name =="XGboost":
@@ -37,10 +24,10 @@ def evaluate(model_name):
 #         return
 
     
-    sc_train = model.score(X_train, y_train)
-    sc_test = model.score(X_test, y_test)
-    y_pred_test = model.predict(X_test)
-    probs=model.predict_proba(X_test)
+    sc_train = model.score(x_train, y_train)
+    sc_test = model.score(x_test, y_test)
+    y_pred_test = model.predict(x_test)
+    probs=model.predict_proba(x_test)
     print(sc_train)
     print(sc_test)
 
