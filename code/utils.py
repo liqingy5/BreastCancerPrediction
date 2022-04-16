@@ -5,12 +5,12 @@ _random_seed_ = 5
 random.seed(_random_seed_)
 
 def load_standard_data():
-    from pandas import read_csv
+    import pickle
     from sklearn.model_selection import train_test_split
         
-    pth = "../data/train_image.csv"
+    pth = "../data/train_images.pkl"
    
 
-    data = read_csv(pth)
-    y, X = data['label'], data['image_array']
+    data = pickle.load(open(pth, "rb"))
+    y, X = data['labels'], data['images']
     return train_test_split(X, y, test_size=0.33, random_state=_random_seed_)
