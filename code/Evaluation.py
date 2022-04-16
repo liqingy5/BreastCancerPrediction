@@ -3,10 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import xgboost as xgb
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression as LR
-from sklearn.metrics import classification_report, roc_auc_score, roc_curve, confusion_matrix
-from sklearn.metrics import precision_recall_curve
 import pickle
 import metrics
 
