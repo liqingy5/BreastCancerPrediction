@@ -26,4 +26,4 @@ def flatten(data):
     x=[]
     for i in data:
         x.append(i.flatten())
-    return x
+    return np.array(x)
