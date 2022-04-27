@@ -7,7 +7,6 @@ def conf_matrix(y_test,y_pred_test):
     tn, fp, fn, tp = confusion_matrix(y_test, y_pred_test).ravel()
     precision = tp/(tp+fp)
     recall = tp/(tp+fn)
-    print("Test data")
     print([[tp,tn],[fp,fn]])
     print("Misclassification error = ",fp+fn)   
     print("SENS(recall)  = ",recall) 
