@@ -1,8 +1,3 @@
-import os
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression as LR
 import pickle
 import metrics
 
@@ -65,16 +60,8 @@ def evaluate(model_name,isOverSampled=False):
         model.load_weights(f'../models/{model_name}.hdf5')
         print("Model: ",model_name)
         print("Training data")
-        # probs = model.predict(x_train)
-        # y_pred_train=probs.argmax(axis=1)
-        # metrics.conf_matrix(y_train,y_pred_train)
-        # metrics.roc_pr_curve(y_train,probs)
         model.evaluate(x_train,y_train)
         print("Test data")
-        # probs = model.predict(x_test)
-        # y_pred_test=probs.argmax(axis=1)
-        # metrics.conf_matrix(y_test,y_pred_test)
-        # metrics.roc_pr_curve(y_test,probs)
         model.evaluate(x_test,y_test)
         return
 
